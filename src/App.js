@@ -1,9 +1,9 @@
 import Filters from "./containers/Filters";
 import Header from "./containers/Header";
 import { StyledContent, StyledLayout } from "./containers/Layout/layout-style";
-import PriceList from "./containers/PriceList";
 import Products from "./containers/Products";
 import { Row, Col } from "antd";
+import BasketList from "./containers/BasketList";
 
 function App() {
   return (
@@ -11,14 +11,14 @@ function App() {
       <Header />
       <StyledContent>
         <Row gutter={16}>
-          <Col xs={0} sm={0} md={8} lg={8} xl={6}>
+          <Col xs={0} sm={0} md={8} lg={8} xl={5}>
             <Filters />
           </Col>
-          <Col xs={24} sm={24} md={16} lg={16} xl={14}>
+          <Col xs={24} sm={24} md={16} lg={16} xl={12}>
             <Products />
           </Col>
-          <Col xs={0} sm={0} md={0} lg={0} xl={4}>
-            <PriceList />
+          <Col xs={0} sm={0} md={0} lg={0} xl={7}>
+            <BasketList />
           </Col>
         </Row>
         </StyledContent>
@@ -27,14 +27,3 @@ function App() {
 }
 
 export default App;
-
-// return (
-//   <>
-//     <Header />
-//     <div style={{display: "flex", justifyContent: 'center', marginLeft: 20, marginRight: 20, marginTop: 30}}>
-//       <Filters />
-//       <Products />
-//       <PriceList />
-//     </div>
-//   </>
-// );
