@@ -28,5 +28,12 @@ export const CountButton = styled(Button)`
   border: none;
   outline: none;
   box-shadow: none;
+  background-color: transparent;
   color: #1ea4ce;
+  &:hover {
+    background-color: transparent;
+  }
+  &:active {
+    background-color: transparent;
+  }
 `
