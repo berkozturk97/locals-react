@@ -2,7 +2,7 @@ import Checkbox from "antd/lib/checkbox/Checkbox";
 import styled from "styled-components";
 
 export const StyledCheckbox = styled(Checkbox)`
- width: 60%;
+ width: 100%;
  .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #1EA4CE;
   border-color: #1EA4CE;

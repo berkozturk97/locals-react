@@ -24,13 +24,10 @@ function* getProducts({ payload }) {
 
 function* getTotalProductCount() {
   try {
-    console.log('girdi');
     yield put({ type: GET_TOTAL_PRODUCT_COUNT });
     const products = yield call(() => fetchProducts({query: {}}));
-    console.log('prod',products);
     yield put({ type: GET_TOTAL_PRODUCT_COUNT_SUCCES, payload: products });
   } catch (error) {
-    console.log(error);
     yield put({ type: GET_TOTAL_PRODUCT_COUNT_FAIL });
   }
 }

@@ -14,6 +14,7 @@ import {
 function App() {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.products.filter);
+  
   useEffect(() => {
     dispatch({ type: GET_TOTAL_PRODUCT_COUNT_REQUESTED });
   }, []);

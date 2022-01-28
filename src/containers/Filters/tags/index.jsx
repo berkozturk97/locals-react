@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   CheckboxContainer,
   StyledCheckbox,
@@ -11,22 +12,23 @@ import {
 } from "../filters-style";
 
 const TagOption = () => {
+  const { tags } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const renderCheckboxes = () => {
+    return tags.map((tag) => (
+      <StyledCheckbox>
+        {tag}
+      </StyledCheckbox>
+    ));
+  };
   return (
     <FilterItemContainer marginTop="24px" height="245px">
       <FilterItemHeader>Tags</FilterItemHeader>
       <FilterOptionsContainer height="230px" padding='24px'>
       <StyledInput placeholder="Search Tag" />
         <CheckboxContainer>
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
-          <StyledCheckbox />
+          <StyledCheckbox>All</StyledCheckbox>
+          {renderCheckboxes()}
         </CheckboxContainer>
       </FilterOptionsContainer>
     </FilterItemContainer>
