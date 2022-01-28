@@ -1,14 +1,14 @@
 import * as types from '../types/basketTypes';
 
 
-export default function addItemToBasket(payload){
+export const addItemToBasket = (payload) => {
     return { type: types.ADD_ITEM_TO_BASKET, payload: payload }
 }
 
-export default function incrementItemCount(payload){
+export const incrementItemCount = (payload) => {
     return { type: types.INCREMENT_ITEM_COUNT, payload: payload }
 }
 
-export default function decrementItemCount(payload){
+export const decrementItemCount = (payload) => {
     return { type: types.DECREMENT_ITEM_COUNT, payload: payload }
 }

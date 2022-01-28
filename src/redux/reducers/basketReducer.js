@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const isProductExist = (product, basketItems) => {
-  return basketItems.some((basketItem) => basketItem.item.added === product.added);
+  return basketItems.some((basketItem) => basketItem.item.name === product.name);
 };
 
 export const basketReducer = (state = initialState, { type, payload }) => {
@@ -22,7 +22,7 @@ export const basketReducer = (state = initialState, { type, payload }) => {
 
     case types.INCREMENT_ITEM_COUNT: {
       const updatedBasket = state.basketItems.map((basketItem) => {
-        if (basketItem.item.added === payload.added) {
+        if (basketItem.item.name === payload.name) {
           return { ...basketItem, quantity: basketItem.quantity++ };
         }
         return basketItem;
@@ -32,16 +32,16 @@ export const basketReducer = (state = initialState, { type, payload }) => {
 
     case types.DECREMENT_ITEM_COUNT: {
       const selectedItem = state.basketItems.find(
-        (basketItem) => basketItem.item.added === payload.added
+        (basketItem) => basketItem.item.name === payload.name
       );
       if (selectedItem?.quantity === 1) {
         const filteredBasket = state.basketItems.filter(
-          (basketItem) => basketItem.item.added !== payload.added
+          (basketItem) => basketItem.item.name !== payload.name
         );
         return { basketItems: filteredBasket };
       } else {
         const updatedBasket = state.basketItems.map((basketItem) => {
-          if (basketItem.item.added === payload.added) {
+          if (basketItem.item.name === payload.name) {
             return { ...basketItem, quantity: basketItem.quantity - 1 };
           }
           return basketItem;

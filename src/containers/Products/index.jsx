@@ -12,10 +12,14 @@ import {
 } from "./products-stlye";
 
 const Products = () => {
-  const {products, loading}  = useSelector((state) => state.products);
+  const { products, loading, filter } = useSelector((state) => state.products);
   const renderProducts = () => {
-    console.log('prod',products);
-    return (products || []).slice(0,16).map((product, index) => <Product key={index} product={product} />);
+    return products.map((product, i) => (
+      <Product
+        key={`prod_${i}`}
+        product={product}
+        image={`https://picsum.photos/300/300?random=${i}`} />
+    ));
   };
   return (
     <Container span={24}>
@@ -29,7 +33,7 @@ const Products = () => {
           {!loading && renderProducts()}
         </Row>
       </ProductListContainer>
-      <Pagination />
+      <Pagination total={products.length} />
     </Container>
   );
 };

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Radio } from "antd";
 
 export const StyledRadio = styled(Radio)`
-  width: 60%;
-  height: 22px;
+  width: 100%;
+  height: 25px;
   margin-top: 10px;
   & span {
     color: #525252;
