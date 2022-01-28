@@ -5,10 +5,10 @@ const initialState = {
 };
 
 const isProductExist = (product, basketItems) => {
-  return basketItems.some((basketItem) => basketItem.item.added === item.added);
+  return basketItems.some((basketItem) => basketItem.item.added === product.added);
 };
 
-export const reducer = (state = initialState, { type, payload }) => {
+export const basketReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.ADD_ITEM_TO_BASKET: {
       if (!isProductExist(state.basketItems, payload)) {

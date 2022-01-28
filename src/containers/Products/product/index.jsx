@@ -2,16 +2,25 @@ import { Col, Row } from "antd";
 import React from "react";
 import { StyledImage } from "../../../components/image";
 import ButtonGroup from "../../ButtonGroups";
-import { Container, ImageContainer, ProductPrice, ProductTitle } from "./product-style";
+import {
+  Container,
+  ImageContainer,
+  ProductInfoContainer,
+  ProductPrice,
+  ProductTitle,
+} from "./product-style";
 
-const Product = () => {
+const Product = ({ product: { price, name }, index }) => {
   return (
-    <Container xs={24} sm={12} md={12} lg={6} xl={6}>
+    <Container key={index} xs={24} sm={12} md={12} lg={6} xl={6}>
       <ImageContainer>
-        <StyledImage />
+        <StyledImage src={`https://picsum.photos/300/300?random=${index}`}/>
       </ImageContainer>
-      <ProductPrice>₺ 16.99</ProductPrice>
-      <ProductTitle>Gorgeous Office Mug</ProductTitle>
+      <ProductInfoContainer>
+        <ProductPrice>₺ {price}</ProductPrice>
+        <ProductTitle>{name}</ProductTitle>
+      </ProductInfoContainer>
+
       <ButtonGroup />
     </Container>
   );

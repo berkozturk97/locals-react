@@ -1,4 +1,5 @@
-import { put, call, takeEvery } from "redux-saga/effects";
+import { put, call, takeEvery, delay } from "redux-saga/effects";
+import { fetchProducts } from "../../api";
 import {
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_REQUEST_SUCCES,
@@ -6,13 +7,14 @@ import {
   GET_PRODUCT_REQUESTED,
 } from "../types/productTypes";
 
-import { fetchProducts } from "../api";
+
 
 function* getProducts() {
   try {
     yield put({ type: GET_PRODUCT_REQUEST });
+    yield delay(3000);
     const products = yield call(() => fetchProducts());
-    yield put({ type: GET_PRODUCT_REQUEST_SUCCES, products });
+    yield put({ type: GET_PRODUCT_REQUEST_SUCCES, payload: products });
   } catch (error) {
     yield put({ type: GET_PRODUCT_REQUEST_FAIL });
   }

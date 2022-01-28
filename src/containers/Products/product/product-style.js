@@ -14,6 +14,12 @@ export const ImageContainer = styled.div`
   align-items: center;
   width: 90%;
 `;
+export const ProductInfoContainer= styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85px;
+`
 export const ProductPrice = styled.div`
   color: #1ea4ce;
   font-size: 14px;
@@ -25,4 +31,5 @@ export const ProductTitle = styled.div`
   font-size: 14px;
   font-weight: 600;
   width: 80%;
+  height: 100%;
 `;

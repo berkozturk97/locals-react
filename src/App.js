@@ -4,8 +4,17 @@ import { StyledContent, StyledLayout } from "./containers/Layout/layout-style";
 import Products from "./containers/Products";
 import { Row, Col } from "antd";
 import BasketList from "./containers/BasketList";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { GET_PRODUCT_REQUESTED } from "./redux/types/productTypes";
+
+
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type: GET_PRODUCT_REQUESTED})
+  }, [])
   return (
     <StyledLayout>
       <Header />

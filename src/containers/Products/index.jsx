@@ -1,5 +1,6 @@
 import { Row } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import { StyledButton } from "../../components/button";
 import Pagination from "../Pagination";
 import Product from "./product";
@@ -11,6 +12,11 @@ import {
 } from "./products-stlye";
 
 const Products = () => {
+  const {products, loading}  = useSelector((state) => state.products);
+  const renderProducts = () => {
+    console.log('prod',products);
+    return (products || []).slice(0,16).map((product, index) => <Product key={index} product={product} />);
+  };
   return (
     <Container span={24}>
       <Title>Products</Title>
@@ -18,24 +24,9 @@ const Products = () => {
         <StyledButton>mug</StyledButton>
         <StyledButton marginLeft="5px">tshirt</StyledButton>
       </ButtonContainer>
-      <ProductListContainer flex='auto' span={24}>
+      <ProductListContainer flex="auto" span={24}>
         <Row>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {!loading && renderProducts()}
         </Row>
       </ProductListContainer>
       <Pagination />
