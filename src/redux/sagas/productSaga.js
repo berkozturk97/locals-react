@@ -13,7 +13,6 @@ import {
 
 function* getProducts({ payload }) {
   try {
-    console.log(payload.query)
     yield put({ type: GET_PRODUCT_REQUEST });
     // yield delay(3000);
     const products = yield call(() => fetchProducts({ query: payload.query }));
@@ -23,13 +22,15 @@ function* getProducts({ payload }) {
   }
 }
 
-function* getTotalProductCount({ payload }) {
+function* getTotalProductCount() {
   try {
-    console.log(payload.query)
+    console.log('girdi');
     yield put({ type: GET_TOTAL_PRODUCT_COUNT });
-    const products = yield call(() => fetchProducts({ query: {}}));
+    const products = yield call(() => fetchProducts({query: {}}));
+    console.log('prod',products);
     yield put({ type: GET_TOTAL_PRODUCT_COUNT_SUCCES, payload: products });
   } catch (error) {
+    console.log(error);
     yield put({ type: GET_TOTAL_PRODUCT_COUNT_FAIL });
   }
 }

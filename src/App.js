@@ -6,17 +6,22 @@ import { Row, Col } from "antd";
 import BasketList from "./containers/BasketList";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_PRODUCT_REQUESTED, GET_TOTAL_PRODUCT_COUNT_REQUESTED } from "./redux/types/productTypes";
-
-
+import {
+  GET_PRODUCT_REQUESTED,
+  GET_TOTAL_PRODUCT_COUNT_REQUESTED,
+} from "./redux/types/productTypes";
 
 function App() {
   const dispatch = useDispatch();
-  const filter = useSelector((state)=> state.products.filter)
+  const filter = useSelector((state) => state.products.filter);
   useEffect(() => {
-    dispatch({type: GET_TOTAL_PRODUCT_COUNT_REQUESTED, payload: { query: {}} })
-    dispatch({type: GET_PRODUCT_REQUESTED, payload: { query: filter} })
-  }, [])
+    dispatch({ type: GET_TOTAL_PRODUCT_COUNT_REQUESTED });
+  }, []);
+
+  useEffect(() => {
+    dispatch({ type: GET_PRODUCT_REQUESTED, payload: { query: filter } });
+  }, [filter]);
+
   return (
     <StyledLayout>
       <Header />
@@ -32,7 +37,7 @@ function App() {
             <BasketList />
           </Col>
         </Row>
-        </StyledContent>
+      </StyledContent>
     </StyledLayout>
   );
 }

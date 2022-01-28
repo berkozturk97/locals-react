@@ -12,7 +12,7 @@ import {
 } from "./products-stlye";
 
 const Products = () => {
-  const { products, loading, filter } = useSelector((state) => state.products);
+  const { products, loading } = useSelector((state) => state.products);
   const renderProducts = () => {
     return products.map((product, i) => (
       <Product
@@ -33,7 +33,7 @@ const Products = () => {
           {!loading && renderProducts()}
         </Row>
       </ProductListContainer>
-      <Pagination total={products.length} />
+      <Pagination />
     </Container>
   );
 };

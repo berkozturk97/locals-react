@@ -6,7 +6,7 @@ const initialState = {
   filter: {
     _limit: 16,
     _page: 1,
-    itemType: "shirt",
+    itemType: undefined,
     _order: "asc",
     _sort: "price",
   },
@@ -27,10 +27,11 @@ export const productReducer = (state = initialState, { type, payload }) => {
       return { ...state, loading: false };
     case types.GET_TOTAL_PRODUCT_COUNT:
       return { ...state, loading: true };
-    case types.UPDATE_PAGE_NUMBER:
-      let updatedFilterOptions = state.filter;
-      updatedFilterOptions['_page'] = payload
-      return { ...state, filter: updatedFilterOptions };
+    case types.UPDATE_FILTER_OPTIONS:
+      // let updatedFilterOptions = state.filter;
+      // updatedFilterOptions[payload.option] = payload.value;
+      let updatedFilterOptions = {...state.filter, ...payload}
+      return { ...state, filter: updatedFilterOptions};
     default:
       return state;
   }

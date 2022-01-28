@@ -5,6 +5,7 @@ export const SortingOptions = [
     sortOptions: {
       _sort: "price",
       _order: "asc",
+      _page: 1
     },
   },
   {
@@ -13,6 +14,7 @@ export const SortingOptions = [
     sortOptions: {
       _sort: "price",
       _order: "desc",
+      _page: 1
     },
   },
   {
@@ -21,6 +23,7 @@ export const SortingOptions = [
     sortOptions: {
       _sort: "added",
       _order: "desc",
+      _page: 1
     },
   },
   {
@@ -28,7 +31,8 @@ export const SortingOptions = [
     value: "time-asc",
     sortOptions: {
       _sort: "added",
-      _order: "desc",
+      _order: "asc",
+      _page: 1
     },
   },
 ];

@@ -1,21 +1,36 @@
 import { Radio } from "antd";
 import React from "react";
-import { CheckRadio, CircledCheckbox } from "../../../components/checkbox";
+import { useDispatch } from "react-redux";
 import { StyledRadio } from "../../../components/radio";
-import { SortingOptions as options} from "../../../constants/sort-options";
-import { FilterItemContainer, FilterItemHeader, FilterOptionsContainer } from "../filters-style";
+import { SortingOptions as options } from "../../../constants/sort-options";
+import { updateFilterOptions } from "../../../redux/actions/productAction";
+import {
+  FilterItemContainer,
+  FilterItemHeader,
+  FilterOptionsContainer,
+} from "../filters-style";
 
 const SortingOption = () => {
+  const dispatch = useDispatch();
+
+  const handleRadioValues = (item) => {
+    dispatch(updateFilterOptions({ ...item.sortOptions }));
+  };
+
   const renderRadioButton = () => {
-    return options.map((item) => <StyledRadio value={item.value}>{item.key}</StyledRadio>)
-  }
+    return options.map((item) => (
+      <StyledRadio onChange={() => handleRadioValues(item)} value={item.value}>
+        {item.key}
+      </StyledRadio>
+    ));
+  };
   return (
     <FilterItemContainer>
       <FilterItemHeader>Sorting</FilterItemHeader>
-      <FilterOptionsContainer padding='24px'>
-          <Radio.Group defaultValue={options[0].value}>
-           {renderRadioButton()}
-          </Radio.Group>
+      <FilterOptionsContainer padding="24px">
+        <Radio.Group defaultValue={options[0].value}>
+          {renderRadioButton()}
+        </Radio.Group>
       </FilterOptionsContainer>
     </FilterItemContainer>
   );

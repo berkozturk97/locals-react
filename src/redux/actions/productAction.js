@@ -1,5 +1,5 @@
-import { UPDATE_PAGE_NUMBER } from "../types/productTypes"
+import { UPDATE_FILTER_OPTIONS } from "../types/productTypes"
 
-export const updatePage = (payload) => {
-    return {type: UPDATE_PAGE_NUMBER, payload: payload}
+export const updateFilterOptions = (payload) => {
+    return {type: UPDATE_FILTER_OPTIONS, payload: payload}
 }
