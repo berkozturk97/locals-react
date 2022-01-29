@@ -18,7 +18,14 @@ const Products = () => {
   const { products, loading } = useSelector((state) => state.products);
 
   const handleClickButton = (item) => {
-    dispatch(updateFilterOptions({ itemType: item, _page: 1 }));
+    dispatch(
+      updateFilterOptions({
+        itemType: item,
+        _page: 1,
+        tags_like: undefined,
+        manufacturer_like: undefined,
+      })
+    );
   };
 
   const renderProducts = () => {
@@ -26,20 +33,26 @@ const Products = () => {
       <Product
         key={`prod_${i}`}
         product={product}
-        image={`https://picsum.photos/300/300?random=${i}`} />
+        image={`https://picsum.photos/300/300?random=${i}`}
+      />
     ));
   };
   return (
     <Container span={24}>
       <Title>Products</Title>
       <ButtonContainer>
-        <StyledButton onClick={()=> handleClickButton(ItemTypes.MUG)}>mug</StyledButton>
-        <StyledButton onClick={()=> handleClickButton(ItemTypes.SHIRT)} marginLeft="5px">shirt</StyledButton>
+        <StyledButton onClick={() => handleClickButton(ItemTypes.MUG)}>
+          mug
+        </StyledButton>
+        <StyledButton
+          onClick={() => handleClickButton(ItemTypes.SHIRT)}
+          marginLeft="5px"
+        >
+          shirt
+        </StyledButton>
       </ButtonContainer>
       <ProductListContainer flex="auto" span={24}>
-        <Row>
-          {!loading && renderProducts()}
-        </Row>
+        <Row>{!loading && renderProducts()}</Row>
       </ProductListContainer>
       <Pagination />
     </Container>

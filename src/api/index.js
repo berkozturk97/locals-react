@@ -15,6 +15,7 @@ export const fetchProducts = async ({query, limitless}) => {
     .get(`${process.env.REACT_APP_API_URL}/products?${queryString}`)
     .then((response) => {
       const totalProductCount = Number(response.headers["x-total-count"]);
+      console.log(response);
       return { products: response.data, totalProductCount }
     })
     .catch((error) => error);

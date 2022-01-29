@@ -13,25 +13,36 @@ const initialState = {
     _sort: "price",
   },
   totalProductCount: 0,
-  companies: {},
-  tags: {},
+  companies: [],
+  tags: [],
 };
-
-const getUniqueTags = (products) => {
-  return _.countBy(products.map(product => product.tags).flat(1).sort());
-}
 
 const createCompanyObject = (products) => {
   const grouppedCompanies = _.groupBy(products, Global.MANUFACTURER);
-  
-  const companies = Object.keys(grouppedCompanies).map(company => ({companyName: company, productCount: grouppedCompanies[company].length}));
-  return companies.sort((a,b) => b.companyName - a.companyName)
-}
+  const companies = Object.keys(grouppedCompanies).map((company) => ({
+    companyName: company,
+    productCount: grouppedCompanies[company].length,
+  }));
 
-export const productReducer = (state = initialState, {
-  type,
-  payload
-}) => {
+  return companies.sort((a, b) => b.companyName - a.companyName);
+};
+
+const createTagObject = (productTags) => {
+  const grouppedTags = _.countBy(
+    productTags
+      .map((product) => product.tags)
+      .flat(1)
+      .sort()
+  );
+  const tags = Object.keys(grouppedTags).map((tag) => ({
+    tagName: tag,
+    tagCount: grouppedTags[tag],
+  }));
+
+  return tags.sort((a, b) => b.tagName - a.tagName);
+};
+
+export const productReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.GET_PRODUCT_REQUEST_SUCCES:
       return {
@@ -42,34 +53,37 @@ export const productReducer = (state = initialState, {
       };
     case types.GET_PRODUCT_REQUEST:
       return {
-        ...state, loading: true
+        ...state,
+        loading: true,
       };
     case types.GET_PRODUCT_REQUEST_FAIL:
       return {
-        ...state, loading: false
+        ...state,
+        loading: false,
       };
     case types.GET_BRAND_AND_TAG_SUCCES:
       return {
         ...state,
-        totalProductCount: payload.totalProductCount,
         companies: createCompanyObject(payload.products),
-        tags: getUniqueTags(payload.products),
+        tags: createTagObject(payload.products),
       };
     case types.GET_BRAND_AND_TAG_FAIL:
       return {
-        ...state, loading: false
+        ...state,
+        loading: false,
       };
     case types.GET_BRAND_AND_TAG:
       return {
-        ...state, loading: true
+        ...state,
+        loading: true,
       };
     case types.UPDATE_FILTER_OPTIONS:
       return {
-        ...state, 
+        ...state,
         filter: {
           ...state.filter,
-          ...payload
-        }
+          ...payload,
+        },
       };
     default:
       return state;
