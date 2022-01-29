@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { Layout } from 'antd';
 
 export const StyledLayout = styled(Layout)`
-  min-height: 120vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fafafa;
 `;
 

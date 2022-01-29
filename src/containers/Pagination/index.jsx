@@ -1,4 +1,3 @@
-import { Row } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilterOptions } from '../../redux/actions/productAction';
@@ -6,6 +5,7 @@ import {
   ArrowContainer,
   ArrowLeft,
   ArrowRigt,
+  Container,
   StyledPagination,
 } from './pagination-style';
 
@@ -16,7 +16,7 @@ function Pagination() {
   const itemRender = (current, type, originalElement) => {
     if (type === 'prev') {
       return (
-        <ArrowContainer marginRight="10px">
+        <ArrowContainer>
           <ArrowLeft />
           <div>Previous</div>
         </ArrowContainer>
@@ -24,7 +24,7 @@ function Pagination() {
     }
     if (type === 'next') {
       return (
-        <ArrowContainer marginLeft="10px">
+        <ArrowContainer>
           <div>Next</div>
           <ArrowRigt />
         </ArrowContainer>
@@ -36,8 +36,7 @@ function Pagination() {
     dispatch(updateFilterOptions({ _page: pageNumber }));
   };
   return (
-    // unutma inline
-    <Row style={{ marginTop: 20 }} justify="center">
+    <Container>
       <StyledPagination
         onChange={onPageChange}
         showSizeChanger={false}
@@ -46,7 +45,7 @@ function Pagination() {
         current={filter._page}
         itemRender={itemRender}
       />
-    </Row>
+    </Container>
   );
 }
 

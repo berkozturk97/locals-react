@@ -15,7 +15,14 @@ export const StyledButton = styled(Button)`
 `;
 
 export const AddButton = styled(Button)`
-  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 22px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 12px;
   margin-top: 10px;
   background-color: #1ea4ce;
   color: #ffffff;

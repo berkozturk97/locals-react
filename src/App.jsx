@@ -28,13 +28,13 @@ function App() {
       <Header />
       <StyledContent>
         <Row gutter={16}>
-          <Col xs={0} sm={0} md={8} lg={8} xl={5}>
+          <Col xs={0} sm={0} md={8} lg={8} xl={6}>
             <Filters />
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={12}>
             <Products />
           </Col>
-          <Col xs={0} sm={0} md={0} lg={0} xl={7}>
+          <Col xs={0} sm={0} md={0} lg={0} xl={6}>
             <BasketList />
           </Col>
         </Row>

@@ -1,4 +1,3 @@
-import { Row } from 'antd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StyledButton } from '../../components/button';
@@ -10,6 +9,7 @@ import {
   ButtonContainer,
   Container,
   ProductListContainer,
+  ProductListWrapper,
   Title,
 } from './products-stlye';
 
@@ -49,7 +49,7 @@ function Products() {
         </StyledButton>
       </ButtonContainer>
       <ProductListContainer flex="auto" span={24}>
-        <Row>{!loading && renderProducts()}</Row>
+        <ProductListWrapper gutter={[24, 20]}>{!loading && renderProducts()}</ProductListWrapper>
       </ProductListContainer>
       <Pagination />
     </Container>

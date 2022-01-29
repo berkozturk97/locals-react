@@ -33,5 +33,6 @@ module.exports = {
     'no-plusplus': 'off',
     'default-param-last': 'off',
     'react/jsx-no-useless-fragment': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
 };
