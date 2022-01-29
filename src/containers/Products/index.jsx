@@ -5,6 +5,7 @@ import { ItemTypes } from '../../constants/item-types';
 import { updateFilterOptions } from '../../redux/actions/productAction';
 import Pagination from '../Pagination';
 import Product from './product';
+import ProductLoading from './product-loading';
 import {
   ButtonContainer,
   Container,
@@ -49,7 +50,7 @@ function Products() {
         </StyledButton>
       </ButtonContainer>
       <ProductListContainer flex="auto" span={24}>
-        <ProductListWrapper gutter={[24, 20]}>{!loading && renderProducts()}</ProductListWrapper>
+        <ProductListWrapper gutter={[24, 20]}>{loading ? <ProductLoading /> : renderProducts()}</ProductListWrapper>
       </ProductListContainer>
       <Pagination />
     </Container>

@@ -11,8 +11,7 @@ function Header() {
       <LogoImg src={logo} alt="locals market" />
       <HeaderBasketContainer>
         <LockOutlined />
-        ₺
-        {totalPrice}
+        ₺ {totalPrice.toFixed(2)}
       </HeaderBasketContainer>
     </Container>
   );

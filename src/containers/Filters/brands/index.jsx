@@ -1,3 +1,4 @@
+import { Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -10,6 +11,7 @@ import {
   FilterItemContainer,
   FilterItemHeader,
   FilterOptionsContainer,
+  SpinnerContainer,
 } from '../filters-style';
 import { FilterItemCount } from './brands-style';
 
@@ -29,37 +31,15 @@ function BrandOption() {
   const changeFilterParams = (e, companyName) => {
     if (e.target.checked) {
       setSelectedBrands([...selectedBrands, companyName]);
-      dispatch(
-        updateFilterOptions({
-          manufacturer_like: [...selectedBrands, companyName],
-        }),
-      );
+      dispatch(updateFilterOptions({ manufacturer_like: [...selectedBrands, companyName] }));
     } else {
-      const updatedBrands = selectedBrands.filter(
-        (brand) => brand !== companyName,
-      );
+      const updatedBrands = selectedBrands.filter((brand) => brand !== companyName);
       setSelectedBrands(updatedBrands);
       dispatch(updateFilterOptions({ manufacturer_like: updatedBrands }));
     }
 
     setCheckAll(false);
   };
-
-  const renderCheckbox = () => filteredCompanies.map((company) => (
-    <StyledCheckbox
-      key={`ch_${company.companyName}`}
-      value={company.companyName}
-      onChange={(e) => changeFilterParams(e, company.companyName)}
-      checked
-    >
-      {company.companyName}
-      <FilterItemCount>
-        (
-        {company.productCount}
-        )
-      </FilterItemCount>
-    </StyledCheckbox>
-  ));
 
   const onCheckAllChange = (e) => {
     setSelectedBrands(e.target.checked ? [] : selectedBrands);
@@ -79,6 +59,18 @@ function BrandOption() {
     setFilteredCompanies(filteredOptions);
   };
 
+  const renderCheckbox = () => filteredCompanies.map((company) => (
+    <StyledCheckbox
+      key={`ch_${company.companyName}`}
+      value={company.companyName}
+      onChange={(e) => changeFilterParams(e, company.companyName)}
+      checked
+    >
+      {company.companyName}
+      <FilterItemCount>  ({company.productCount}) </FilterItemCount>
+    </StyledCheckbox>
+  ));
+
   return (
     <FilterItemContainer marginTop="24px" height="245px">
       <FilterItemHeader>Brands</FilterItemHeader>
@@ -88,7 +80,11 @@ function BrandOption() {
           value={searchQuery}
           placeholder="Search Brand"
         />
-        {!loading && (
+        {loading ? (
+          <SpinnerContainer>
+            <Spin size="large" />
+          </SpinnerContainer>
+        ) : (
           <CheckboxContainer>
             <StyledCheckbox checked={checkAll} onChange={onCheckAllChange}>
               All

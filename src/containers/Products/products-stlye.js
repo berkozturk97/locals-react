@@ -27,8 +27,9 @@ export const ButtonContainer = styled.div`
   justify-content: space-between;
 `;
 export const ProductListContainer = styled(Col)`
-  background-color: #fefefe;
+  background-color: #ffffff;
   margin-top: 16px;
-  padding-left: 0;
-  padding-right: 0;
+  @media screen and (max-width: 576px) {
+    background-color: #fafafa;
+  }
 `;

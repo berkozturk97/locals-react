@@ -23,3 +23,9 @@ export const FilterOptionsContainer = styled.div`
     margin-top: 5px;
     padding: ${(props) => (props.padding ? props.padding : 0)};
 `;
+export const SpinnerContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    aling-items: center;
+    margin-top: 50px;
+`;

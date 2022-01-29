@@ -8,9 +8,11 @@ export const StyledButton = styled(Button)`
   font-size: 13px;
   color: #1ea4ce;
   background-color: #f2f0fd;
-  &:hover {
-    color: #f2f0fd;
+  &:hover,
+  &:active,
+  &:focus {
     background-color: #1ea4ce;
+    color: #ffffff;
   }
 `;
 
@@ -26,6 +28,12 @@ export const AddButton = styled(Button)`
   margin-top: 10px;
   background-color: #1ea4ce;
   color: #ffffff;
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #1ea4ce;
+    color: #ffffff;
+  }
 `;
 
 export const CountButton = styled(Button)`

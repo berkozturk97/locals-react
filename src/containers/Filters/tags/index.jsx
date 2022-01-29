@@ -1,9 +1,7 @@
+import { Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  CheckboxContainer,
-  StyledCheckbox,
-} from '../../../components/checkbox';
+import { CheckboxContainer, StyledCheckbox } from '../../../components/checkbox';
 import { StyledInput } from '../../../components/input';
 import { updateFilterOptions } from '../../../redux/actions/productAction';
 import { FilterItemCount } from '../brands/brands-style';
@@ -11,6 +9,7 @@ import {
   FilterItemContainer,
   FilterItemHeader,
   FilterOptionsContainer,
+  SpinnerContainer,
 } from '../filters-style';
 
 function TagOption() {
@@ -43,23 +42,6 @@ function TagOption() {
     setCheckAll(false);
   };
 
-  const renderCheckboxes = () => filteredTags.map((tag) => (
-    <StyledCheckbox
-      key={`ch_${tag.tagName}`}
-      value={tag.tagName}
-      onChange={(e) => changeFilterParams(e, tag.tagName)}
-      checked
-    >
-      {tag.tagName}
-      {' '}
-      <FilterItemCount>
-        (
-        {tag.tagCount}
-        )
-      </FilterItemCount>
-    </StyledCheckbox>
-  ));
-
   const onCheckAllChange = (e) => {
     setSelectedTags(e.target.checked ? [] : selectedTags);
     if (e.target.checked) {
@@ -76,6 +58,18 @@ function TagOption() {
     setFilteredTags(filteredOptions);
   };
 
+  const renderCheckboxes = () => filteredTags.map((tag) => (
+    <StyledCheckbox
+      key={`ch_${tag.tagName}`}
+      value={tag.tagName}
+      onChange={(e) => changeFilterParams(e, tag.tagName)}
+      checked
+    >
+      {tag.tagName}
+      <FilterItemCount>  ({tag.tagCount})</FilterItemCount>
+    </StyledCheckbox>
+  ));
+
   return (
     <FilterItemContainer marginTop="24px" height="245px">
       <FilterItemHeader>Tags</FilterItemHeader>
@@ -85,7 +79,11 @@ function TagOption() {
           value={searchQuery}
           placeholder="Search Tag"
         />
-        {!loading && (
+        {loading ? (
+          <SpinnerContainer>
+            <Spin size="large" />
+          </SpinnerContainer>
+        ) : (
           <CheckboxContainer>
             <StyledCheckbox checked={checkAll} onChange={onCheckAllChange}>
               All
