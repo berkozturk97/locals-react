@@ -1,5 +1,5 @@
-import { Button } from "antd";
-import styled from "styled-components";
+import { Button } from 'antd';
+import styled from 'styled-components';
 
 export const StyledButton = styled(Button)`
   width: 60px;
@@ -8,7 +8,7 @@ export const StyledButton = styled(Button)`
   font-size: 13px;
   color: #1ea4ce;
   background-color: #f2f0fd;
-  margin-left: ${props => props.marginLeft ? props.marginLeft : 0};
+  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)};
   &:hover {
     color: #f2f0fd;
     background-color: #1ea4ce;
@@ -20,7 +20,7 @@ export const AddButton = styled(Button)`
   margin-top: 10px;
   background-color: #1ea4ce;
   color: #ffffff;
-`
+`;
 
 export const CountButton = styled(Button)`
   height: 32px;
@@ -36,4 +36,4 @@ export const CountButton = styled(Button)`
   &:active {
     background-color: transparent;
   }
-`
+`;

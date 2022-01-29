@@ -1,17 +1,17 @@
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons/lib/icons";
-import { Pagination } from "antd";
-import styled from "styled-components";
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons/lib/icons';
+import { Pagination } from 'antd';
+import styled from 'styled-components';
 
 export const ArrowLeft = styled(ArrowLeftOutlined)`
     color: #1EA4CE;
-`
+`;
 export const ArrowRigt = styled(ArrowRightOutlined)`
     color: #1EA4CE;
-`
+`;
 export const ArrowContainer = styled.div`
-    margin-left: ${props => props.marginLeft ? props.marginLeft : 0};
-    margin-right: ${props => props.marginRight ? props.marginRight : 0};
-`
+    margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)};
+    margin-right: ${(props) => (props.marginRight ? props.marginRight : 0)};
+`;
 
 export const StyledPagination = styled(Pagination)`
     .ant-pagination-item {
@@ -38,4 +38,4 @@ export const StyledPagination = styled(Pagination)`
     .ant-pagination-next a{
         color: #697488;
     }
-`
+`;

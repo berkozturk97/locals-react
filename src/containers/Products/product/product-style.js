@@ -1,5 +1,5 @@
-import { Col } from "antd";
-import styled from "styled-components";
+import { Col } from 'antd';
+import styled from 'styled-components';
 
 export const Container = styled(Col)`
   margin-top: 20px;
@@ -14,12 +14,12 @@ export const ImageContainer = styled.div`
   align-items: center;
   width: 90%;
 `;
-export const ProductInfoContainer= styled.div`
+export const ProductInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 85px;
-`
+`;
 export const ProductPrice = styled.div`
   color: #1ea4ce;
   font-size: 14px;

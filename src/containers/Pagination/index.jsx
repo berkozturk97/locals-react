@@ -1,31 +1,32 @@
-import { Col, Row } from "antd";
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { updateFilterOptions } from "../../redux/actions/productAction";
+import { Row } from 'antd';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateFilterOptions } from '../../redux/actions/productAction';
 import {
   ArrowContainer,
   ArrowLeft,
   ArrowRigt,
   StyledPagination,
-} from "./pagination-style";
+} from './pagination-style';
 
-const Pagination = () => {
+function Pagination() {
   const { totalProductCount, filter } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   const itemRender = (current, type, originalElement) => {
-    if (type === "prev") {
+    if (type === 'prev') {
       return (
         <ArrowContainer marginRight="10px">
-          <ArrowLeft /> <a>Previous</a>
+          <ArrowLeft />
+          <div>Previous</div>
         </ArrowContainer>
       );
     }
-    if (type === "next") {
+    if (type === 'next') {
       return (
         <ArrowContainer marginLeft="10px">
-          <a>Next</a> <ArrowRigt />
+          <div>Next</div>
+          <ArrowRigt />
         </ArrowContainer>
       );
     }
@@ -35,7 +36,7 @@ const Pagination = () => {
     dispatch(updateFilterOptions({ _page: pageNumber }));
   };
   return (
-    //unutma inline
+    // unutma inline
     <Row style={{ marginTop: 20 }} justify="center">
       <StyledPagination
         onChange={onPageChange}
@@ -47,6 +48,6 @@ const Pagination = () => {
       />
     </Row>
   );
-};
+}
 
 export default Pagination;

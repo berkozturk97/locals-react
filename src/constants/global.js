@@ -1,5 +1,4 @@
 export const Global = {
-    MANUFACTURER: "manufacturer",
-    TAGS: "tags"
+  MANUFACTURER: 'manufacturer',
+  TAGS: 'tags',
 };
-  

@@ -1,11 +1,11 @@
-import axios from "axios";
-import qs from "qs";
-import _ from "lodash";
+import axios from 'axios';
+import qs from 'qs';
+import _ from 'lodash';
 
-export const fetchProducts = async ({query, limitless}) => {
+export const fetchProducts = async ({ query, limitless }) => {
   const clonnedQuery = _.cloneDeep(query);
 
-  if(limitless === true){
+  if (limitless === true) {
     delete clonnedQuery._limit;
     delete clonnedQuery._page;
   }
@@ -14,10 +14,8 @@ export const fetchProducts = async ({query, limitless}) => {
   return axios
     .get(`${process.env.REACT_APP_API_URL}/products?${queryString}`)
     .then((response) => {
-      const totalProductCount = Number(response.headers["x-total-count"]);
-      console.log(response);
-      return { products: response.data, totalProductCount }
+      const totalProductCount = Number(response.headers['x-total-count']);
+      return { products: response.data, totalProductCount };
     })
     .catch((error) => error);
-}
-
+};
