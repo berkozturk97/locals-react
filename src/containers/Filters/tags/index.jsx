@@ -1,10 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   CheckboxContainer,
   StyledCheckbox,
 } from "../../../components/checkbox";
 import { StyledInput } from "../../../components/input";
+import { FilterItemCount } from "../brands/brands-style";
 import {
   FilterItemContainer,
   FilterItemHeader,
@@ -13,11 +14,10 @@ import {
 
 const TagOption = () => {
   const { tags } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
   const renderCheckboxes = () => {
-    return tags.map((tag) => (
+    return Object.keys(tags).map((tag) => (
       <StyledCheckbox>
-        {tag}
+        {tag} <FilterItemCount>({tags[tag]})</FilterItemCount>
       </StyledCheckbox>
     ));
   };

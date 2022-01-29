@@ -5,34 +5,36 @@ import {
   GET_PRODUCT_REQUEST_SUCCES,
   GET_PRODUCT_REQUEST_FAIL,
   GET_PRODUCT_REQUESTED,
-  GET_TOTAL_PRODUCT_COUNT,
-  GET_TOTAL_PRODUCT_COUNT_SUCCES,
-  GET_TOTAL_PRODUCT_COUNT_FAIL,
-  GET_TOTAL_PRODUCT_COUNT_REQUESTED
+  GET_BRAND_AND_TAG,
+  GET_BRAND_AND_TAG_SUCCES,
+  GET_BRAND_AND_TAG_FAIL,
+  GET_BRAND_AND_TAG_REQUESTED
 } from "../types/productTypes";
 
 function* getProducts({ payload }) {
   try {
     yield put({ type: GET_PRODUCT_REQUEST });
     // yield delay(3000);
-    const products = yield call(() => fetchProducts({ query: payload.query }));
-    yield put({ type: GET_PRODUCT_REQUEST_SUCCES, payload: products });
+    const { products, totalProductCount } = yield call(() => fetchProducts({ query: payload.query, limitless: false }));
+    console.log(products, totalProductCount)
+    yield put({ type: GET_PRODUCT_REQUEST_SUCCES, payload: { products, totalProductCount } });
   } catch (error) {
     yield put({ type: GET_PRODUCT_REQUEST_FAIL });
   }
 }
 
-function* getTotalProductCount() {
+function* getTotalProductWithoutLimit({ payload }) {
   try {
-    yield put({ type: GET_TOTAL_PRODUCT_COUNT });
-    const products = yield call(() => fetchProducts({query: {}}));
-    yield put({ type: GET_TOTAL_PRODUCT_COUNT_SUCCES, payload: products });
+    const { query, limitless } = payload;    
+    yield put({ type: GET_BRAND_AND_TAG });
+    const {products, totalProductCount } = yield call(() => fetchProducts({ query, limitless }));
+    yield put({ type: GET_BRAND_AND_TAG_SUCCES, payload: {products, totalProductCount} });
   } catch (error) {
-    yield put({ type: GET_TOTAL_PRODUCT_COUNT_FAIL });
+    yield put({ type: GET_BRAND_AND_TAG_FAIL });
   }
 }
 
 export default function* productSaga() {
   yield takeEvery(GET_PRODUCT_REQUESTED, getProducts);
-  yield takeEvery(GET_TOTAL_PRODUCT_COUNT_REQUESTED, getTotalProductCount);
+  yield takeEvery(GET_BRAND_AND_TAG_REQUESTED, getTotalProductWithoutLimit);
 }

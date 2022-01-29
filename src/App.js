@@ -8,16 +8,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   GET_PRODUCT_REQUESTED,
-  GET_TOTAL_PRODUCT_COUNT_REQUESTED,
+  GET_BRAND_AND_TAG_REQUESTED,
 } from "./redux/types/productTypes";
 
 function App() {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.products.filter);
-  
+
   useEffect(() => {
-    dispatch({ type: GET_TOTAL_PRODUCT_COUNT_REQUESTED });
-  }, []);
+    dispatch({ type: GET_BRAND_AND_TAG_REQUESTED, payload: { query: filter, limitless: true } });
+  }, [filter.itemType]);
 
   useEffect(() => {
     dispatch({ type: GET_PRODUCT_REQUESTED, payload: { query: filter } });

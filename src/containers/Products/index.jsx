@@ -1,7 +1,9 @@
 import { Row } from "antd";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledButton } from "../../components/button";
+import { ItemTypes } from "../../constants/item-types";
+import { updateFilterOptions } from "../../redux/actions/productAction";
 import Pagination from "../Pagination";
 import Product from "./product";
 import {
@@ -12,7 +14,13 @@ import {
 } from "./products-stlye";
 
 const Products = () => {
+  const dispatch = useDispatch();
   const { products, loading } = useSelector((state) => state.products);
+
+  const handleClickButton = (item) => {
+    dispatch(updateFilterOptions({ itemType: item, _page: 1 }));
+  };
+
   const renderProducts = () => {
     return products.map((product, i) => (
       <Product
@@ -25,8 +33,8 @@ const Products = () => {
     <Container span={24}>
       <Title>Products</Title>
       <ButtonContainer>
-        <StyledButton>mug</StyledButton>
-        <StyledButton marginLeft="5px">tshirt</StyledButton>
+        <StyledButton onClick={()=> handleClickButton(ItemTypes.MUG)}>mug</StyledButton>
+        <StyledButton onClick={()=> handleClickButton(ItemTypes.SHIRT)} marginLeft="5px">shirt</StyledButton>
       </ButtonContainer>
       <ProductListContainer flex="auto" span={24}>
         <Row>

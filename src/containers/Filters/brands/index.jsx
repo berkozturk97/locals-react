@@ -1,10 +1,12 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   CheckboxContainer,
   StyledCheckbox,
 } from "../../../components/checkbox";
 import { StyledInput } from "../../../components/input";
+import { updateFilterOptions } from "../../../redux/actions/productAction";
 import {
   FilterItemContainer,
   FilterItemHeader,
@@ -13,23 +15,70 @@ import {
 import { FilterItemCount } from "./brands-style";
 
 const BrandOption = () => {
-  const { companies } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const renderCheckbox = () => {
-    return Object.keys(companies).map((company) => (
-      <StyledCheckbox>
-        {company} <FilterItemCount>({companies[company].length})</FilterItemCount>
-      </StyledCheckbox>
-    ));
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [checkAll, setCheckAll] = React.useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const { companies } = useSelector((state) => state.products);
+  const [filteredCompanies, setFilteredCompanies] = useState([]);
+
+  useEffect(() => {
+    setFilteredCompanies(companies)
+  }, [companies])
+
+  const changeFilterParams = (e, companyName) => {
+    if (e.target.checked) {
+      setSelectedBrands([ ...selectedBrands,companyName]);
+      dispatch(updateFilterOptions({ manufacturer_like: [ ...selectedBrands,companyName] }))
+    } else {
+      const updatedBrands = selectedBrands.filter((brand) => brand !== companyName);
+      setSelectedBrands(updatedBrands);
+      dispatch(updateFilterOptions({ manufacturer_like: updatedBrands }))
+    }
+    
+    setCheckAll(false);
   };
+
+  const renderCheckbox = () => {
+    return filteredCompanies
+      .map((company) => (
+        <StyledCheckbox
+          value={company.companyName}
+          onChange={(e) => changeFilterParams(e, company.companyName)}
+          checked
+        >
+          {company.companyName}
+          <FilterItemCount>({company.productCount})</FilterItemCount>
+        </StyledCheckbox>
+      ));
+  };
+
+  const onCheckAllChange = e => {
+    setSelectedBrands(e.target.checked ? [] : selectedBrands);
+    setCheckAll(e.target.checked);
+  };
+
+  const handleSearchInput = (e) => {
+    setSearchQuery(e.target.value);
+    const filteredOptions = companies.filter(company => company.companyName.toLowerCase().search(e.target.value.toLowerCase()) != -1);
+    setFilteredCompanies(filteredOptions);
+  }
+
   return (
     <FilterItemContainer marginTop="24px" height="245px">
       <FilterItemHeader>Brands</FilterItemHeader>
       <FilterOptionsContainer height="230px" padding="24px">
-        <StyledInput placeholder="Search Brand" />
+        <StyledInput onChange={handleSearchInput} value={searchQuery} placeholder="Search Brand" />
         <CheckboxContainer>
-          <StyledCheckbox>All</StyledCheckbox>
-          {renderCheckbox()}
+          <StyledCheckbox
+            checked={checkAll}
+            onChange={onCheckAllChange}
+          >
+            All
+          </StyledCheckbox>
+          <StyledCheckbox.Group value={selectedBrands} >
+            {renderCheckbox()}
+          </StyledCheckbox.Group>
         </CheckboxContainer>
       </FilterOptionsContainer>
     </FilterItemContainer>
