@@ -18,7 +18,7 @@ function SortingOption() {
   };
 
   const renderRadioButton = () => options.map((item) => (
-    <StyledRadio onChange={() => handleRadioValues(item)} value={item.value}>
+    <StyledRadio key={`sr_${item.value}`} onChange={() => handleRadioValues(item)} value={item.value}>
       {item.key}
     </StyledRadio>
   ));

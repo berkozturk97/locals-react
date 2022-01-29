@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { AddButton } from '../../../components/button';
 import { StyledImage } from '../../../components/image';
-import ButtonGroup from '../../ButtonGroups';
+import { addItemToBasket } from '../../../redux/actions/basketAction';
 import {
   Container,
   ImageContainer,
@@ -10,6 +12,10 @@ import {
 } from './product-style';
 
 function Product({ product: { price, name }, image }) {
+  const dispatch = useDispatch();
+  const onItemAdd = () => {
+    dispatch(addItemToBasket({ name, price }));
+  };
   return (
     <Container xs={24} sm={12} md={12} lg={6} xl={6}>
       <ImageContainer>
@@ -23,7 +29,7 @@ function Product({ product: { price, name }, image }) {
         <ProductTitle>{name}</ProductTitle>
       </ProductInfoContainer>
 
-      <ButtonGroup />
+      <AddButton onClick={() => onItemAdd()}>Add</AddButton>
     </Container>
   );
 }

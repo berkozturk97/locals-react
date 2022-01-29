@@ -40,13 +40,12 @@ function Products() {
       <Title>Products</Title>
       <ButtonContainer>
         <StyledButton onClick={() => handleClickButton(ItemTypes.MUG)}>
-          mug
+          {ItemTypes.MUG}
         </StyledButton>
         <StyledButton
           onClick={() => handleClickButton(ItemTypes.SHIRT)}
-          marginLeft="5px"
         >
-          shirt
+          {ItemTypes.SHIRT}
         </StyledButton>
       </ButtonContainer>
       <ProductListContainer flex="auto" span={24}>

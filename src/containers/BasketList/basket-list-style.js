@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   border: 6px solid #1ea4ce;
+  min-height: 100px;
   border-radius: 2px;
   padding: 16px;
 `;
@@ -31,5 +32,10 @@ export const TotalPrice = styled.div`
   justify-content: center;
   align-items: center;
   color: #1ea4ce;
+  font-weight: 600;
+`;
+
+export const EmptyInfo = styled.div`
+  color: #191919;
   font-weight: 600;
 `;

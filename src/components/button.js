@@ -8,7 +8,6 @@ export const StyledButton = styled(Button)`
   font-size: 13px;
   color: #1ea4ce;
   background-color: #f2f0fd;
-  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)};
   &:hover {
     color: #f2f0fd;
     background-color: #1ea4ce;

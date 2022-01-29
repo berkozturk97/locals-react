@@ -2,23 +2,29 @@ import * as types from '../types/basketTypes';
 
 const initialState = {
   basketItems: [],
+  totalPrice: 0,
 };
 
-const isProductExist = (product, basketItems) => basketItems.some((basketItem) => basketItem.item.name === product.name);
+const grandTotal = (basketItems) => {
+  if (basketItems.length > 0) {
+    return basketItems.reduce((sum, basket) => sum + (basket.item.price * basket.quantity), 0);
+  }
+  return 0;
+};
+
+const isProductExist = (product, basketItems) => basketItems.some((basketItem) => basketItem.item.name === product);
 
 export const basketReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.ADD_ITEM_TO_BASKET: {
-      if (!isProductExist(state.basketItems, payload)) {
+      if (!isProductExist(payload.name, state.basketItems)) {
         const newBasketItem = { item: payload, quantity: 1 };
         return {
-          basket: state.basket.concat(newBasketItem),
+          ...state,
+          basketItems: state.basketItems.concat(newBasketItem),
+          totalPrice: grandTotal(state.basketItems.concat(newBasketItem)),
         };
       }
-      return state;
-    }
-
-    case types.INCREMENT_ITEM_COUNT: {
       const updatedBasket = state.basketItems.map((basketItem) => {
         if (basketItem.item.name === payload.name) {
           const quantity = basketItem.quantity + 1;
@@ -26,10 +32,14 @@ export const basketReducer = (state = initialState, { type, payload }) => {
         }
         return basketItem;
       });
-      return { basketItems: updatedBasket };
+      return {
+        ...state,
+        basketItems: updatedBasket,
+        totalPrice: grandTotal(updatedBasket),
+      };
     }
 
-    case types.DECREMENT_ITEM_COUNT: {
+    case types.REMOVE_ITEM_FROM_BASKET: {
       const selectedItem = state.basketItems.find(
         (basketItem) => basketItem.item.name === payload.name,
       );
@@ -37,7 +47,11 @@ export const basketReducer = (state = initialState, { type, payload }) => {
         const filteredBasket = state.basketItems.filter(
           (basketItem) => basketItem.item.name !== payload.name,
         );
-        return { basketItems: filteredBasket };
+        return {
+          ...state,
+          basketItems: filteredBasket,
+          totalPrice: grandTotal(filteredBasket),
+        };
       }
       const updatedBasket = state.basketItems.map((basketItem) => {
         if (basketItem.item.name === payload.name) {
@@ -45,7 +59,11 @@ export const basketReducer = (state = initialState, { type, payload }) => {
         }
         return basketItem;
       });
-      return { basketItems: updatedBasket };
+      return {
+        ...state,
+        basketItems: updatedBasket,
+        totalPrice: grandTotal(updatedBasket),
+      };
     }
     default:
       return state;
