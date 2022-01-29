@@ -1,15 +1,15 @@
-import Filters from "./containers/Filters";
-import Header from "./containers/Header";
-import { StyledContent, StyledLayout } from "./containers/Layout/layout-style";
-import Products from "./containers/Products";
-import { Row, Col } from "antd";
-import BasketList from "./containers/BasketList";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Row, Col } from 'antd';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Filters from './containers/Filters';
+import Header from './containers/Header';
+import { StyledContent, StyledLayout } from './containers/Layout/layout-style';
+import Products from './containers/Products';
+import BasketList from './containers/BasketList';
 import {
   GET_PRODUCT_REQUESTED,
   GET_BRAND_AND_TAG_REQUESTED,
-} from "./redux/types/productTypes";
+} from './redux/types/productTypes';
 
 function App() {
   const dispatch = useDispatch();

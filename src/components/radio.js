@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Radio } from "antd";
+import styled from 'styled-components';
+import { Radio } from 'antd';
 
 export const StyledRadio = styled(Radio)`
   width: 100%;

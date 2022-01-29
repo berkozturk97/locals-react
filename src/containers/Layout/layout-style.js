@@ -1,12 +1,10 @@
-import styled from "styled-components";
-import { Layout } from "antd";
+import styled from 'styled-components';
+import { Layout } from 'antd';
 
 export const StyledLayout = styled(Layout)`
   min-height: 120vh;
   background-color: #fafafa;
 `;
-
-
 
 export const StyledContent = styled(Layout.Content)`
   width: 100% !important;

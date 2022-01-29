@@ -1,5 +1,4 @@
 export const ItemTypes = {
-    MUG: "mug",
-    SHIRT: "shirt"
+  MUG: 'mug',
+  SHIRT: 'shirt',
 };
-  

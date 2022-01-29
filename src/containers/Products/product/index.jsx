@@ -1,28 +1,31 @@
-import React from "react";
-import { StyledImage } from "../../../components/image";
-import ButtonGroup from "../../ButtonGroups";
+import React from 'react';
+import { StyledImage } from '../../../components/image';
+import ButtonGroup from '../../ButtonGroups';
 import {
   Container,
   ImageContainer,
   ProductInfoContainer,
   ProductPrice,
   ProductTitle,
-} from "./product-style";
+} from './product-style';
 
-const Product = ({ product: { price, name }, image }) => {
+function Product({ product: { price, name }, image }) {
   return (
     <Container xs={24} sm={12} md={12} lg={6} xl={6}>
       <ImageContainer>
-        <StyledImage src={image}/>
+        <StyledImage src={image} />
       </ImageContainer>
       <ProductInfoContainer>
-        <ProductPrice>₺ {price}</ProductPrice>
+        <ProductPrice>
+          ₺
+          {price}
+        </ProductPrice>
         <ProductTitle>{name}</ProductTitle>
       </ProductInfoContainer>
 
       <ButtonGroup />
     </Container>
   );
-};
+}
 
 export default Product;

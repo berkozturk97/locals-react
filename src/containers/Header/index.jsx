@@ -1,17 +1,19 @@
-import { LockOutlined } from "@ant-design/icons/lib/icons";
-import React from "react";
-import logo from '../../assets/images/Logo.svg'
-import { HeaderBasketContainer, Container, LogoImg } from "./header-style";
+import { LockOutlined } from '@ant-design/icons/lib/icons';
+import React from 'react';
+import logo from '../../assets/images/Logo.svg';
+import { HeaderBasketContainer, Container, LogoImg } from './header-style';
 
-const Header = () => {
+function Header() {
   return (
     <Container>
-      <LogoImg src={logo} alt="locals market"/>
+      <LogoImg src={logo} alt="locals market" />
       <HeaderBasketContainer>
-      <LockOutlined /> ₺ 16.99
+        <LockOutlined />
+        {' '}
+        ₺ 16.99
       </HeaderBasketContainer>
     </Container>
   );
-};
+}
 
 export default Header;

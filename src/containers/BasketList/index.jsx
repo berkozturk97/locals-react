@@ -1,16 +1,16 @@
-import { Divider } from "antd";
-import React from "react";
-import ButtonGroup from "../ButtonGroups";
-import { ProductPrice, ProductTitle } from "../Products/product/product-style";
+import { Divider } from 'antd';
+import React from 'react';
+import ButtonGroup from '../ButtonGroups';
+import { ProductPrice, ProductTitle } from '../Products/product/product-style';
 import {
   Container,
   ItemContainer,
   OrderedItemContainer,
   TotalPrice,
   TotalPriceContainer,
-} from "./basket-list-style";
+} from './basket-list-style';
 
-const BasketList = () => {
+function BasketList() {
   return (
     <Container>
       <ItemContainer>
@@ -18,7 +18,7 @@ const BasketList = () => {
           <ProductTitle>Example Product</ProductTitle>
           <ProductPrice>₺ 16.99</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup test={"test"} />
+        <ButtonGroup test="test" />
       </ItemContainer>
       <Divider />
       <ItemContainer>
@@ -26,7 +26,7 @@ const BasketList = () => {
           <ProductTitle>Example Product</ProductTitle>
           <ProductPrice>₺ 16.99</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup test={"test"} />
+        <ButtonGroup test="test" />
       </ItemContainer>
       <Divider />
       <ItemContainer>
@@ -34,7 +34,7 @@ const BasketList = () => {
           <ProductTitle>Example Product</ProductTitle>
           <ProductPrice>₺ 16.99</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup test={"test"} />
+        <ButtonGroup test="test" />
       </ItemContainer>
       <Divider />
       <ItemContainer>
@@ -42,7 +42,7 @@ const BasketList = () => {
           <ProductTitle>Example Product</ProductTitle>
           <ProductPrice>₺ 16.99</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup test={"test"} />
+        <ButtonGroup test="test" />
       </ItemContainer>
       <Divider />
       <ItemContainer>
@@ -50,7 +50,7 @@ const BasketList = () => {
           <ProductTitle>Example Product</ProductTitle>
           <ProductPrice>₺ 16.99</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup test={"test"} />
+        <ButtonGroup test="test" />
       </ItemContainer>
       <Divider />
       <ItemContainer>
@@ -58,7 +58,7 @@ const BasketList = () => {
           <ProductTitle>Example Product</ProductTitle>
           <ProductPrice>₺ 16.99</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup test={"test"} />
+        <ButtonGroup test="test" />
       </ItemContainer>
       <Divider />
 
@@ -67,6 +67,6 @@ const BasketList = () => {
       </TotalPriceContainer>
     </Container>
   );
-};
+}
 
 export default BasketList;

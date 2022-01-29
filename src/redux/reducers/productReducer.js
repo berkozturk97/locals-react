@@ -1,6 +1,6 @@
-import * as types from "../types/productTypes";
-import _ from "lodash";
-import { Global } from "../../constants/global";
+import _ from 'lodash';
+import * as types from '../types/productTypes';
+import { Global } from '../../constants/global';
 
 const initialState = {
   products: [],
@@ -9,8 +9,8 @@ const initialState = {
     _limit: 16,
     _page: 1,
     itemType: undefined,
-    _order: "asc",
-    _sort: "price",
+    _order: 'asc',
+    _sort: 'price',
   },
   totalProductCount: 0,
   companies: [],
@@ -32,7 +32,7 @@ const createTagObject = (productTags) => {
     productTags
       .map((product) => product.tags)
       .flat(1)
-      .sort()
+      .sort(),
   );
   const tags = Object.keys(grouppedTags).map((tag) => ({
     tagName: tag,

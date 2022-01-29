@@ -1,29 +1,27 @@
-import { Radio } from "antd";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { StyledRadio } from "../../../components/radio";
-import { SortingOptions as options } from "../../../constants/sort-options";
-import { updateFilterOptions } from "../../../redux/actions/productAction";
+import { Radio } from 'antd';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { StyledRadio } from '../../../components/radio';
+import { SortingOptions as options } from '../../../constants/sort-options';
+import { updateFilterOptions } from '../../../redux/actions/productAction';
 import {
   FilterItemContainer,
   FilterItemHeader,
   FilterOptionsContainer,
-} from "../filters-style";
+} from '../filters-style';
 
-const SortingOption = () => {
+function SortingOption() {
   const dispatch = useDispatch();
 
   const handleRadioValues = (item) => {
     dispatch(updateFilterOptions({ ...item.sortOptions }));
   };
 
-  const renderRadioButton = () => {
-    return options.map((item) => (
-      <StyledRadio onChange={() => handleRadioValues(item)} value={item.value}>
-        {item.key}
-      </StyledRadio>
-    ));
-  };
+  const renderRadioButton = () => options.map((item) => (
+    <StyledRadio onChange={() => handleRadioValues(item)} value={item.value}>
+      {item.key}
+    </StyledRadio>
+  ));
   return (
     <FilterItemContainer>
       <FilterItemHeader>Sorting</FilterItemHeader>
@@ -34,6 +32,6 @@ const SortingOption = () => {
       </FilterOptionsContainer>
     </FilterItemContainer>
   );
-};
+}
 
 export default SortingOption;

@@ -1,19 +1,19 @@
-import { Row } from "antd";
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { StyledButton } from "../../components/button";
-import { ItemTypes } from "../../constants/item-types";
-import { updateFilterOptions } from "../../redux/actions/productAction";
-import Pagination from "../Pagination";
-import Product from "./product";
+import { Row } from 'antd';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { StyledButton } from '../../components/button';
+import { ItemTypes } from '../../constants/item-types';
+import { updateFilterOptions } from '../../redux/actions/productAction';
+import Pagination from '../Pagination';
+import Product from './product';
 import {
   ButtonContainer,
   Container,
   ProductListContainer,
   Title,
-} from "./products-stlye";
+} from './products-stlye';
 
-const Products = () => {
+function Products() {
   const dispatch = useDispatch();
   const { products, loading } = useSelector((state) => state.products);
 
@@ -24,19 +24,17 @@ const Products = () => {
         _page: 1,
         tags_like: undefined,
         manufacturer_like: undefined,
-      })
+      }),
     );
   };
 
-  const renderProducts = () => {
-    return products.map((product, i) => (
-      <Product
-        key={`prod_${i}`}
-        product={product}
-        image={`https://picsum.photos/300/300?random=${i}`}
-      />
-    ));
-  };
+  const renderProducts = () => products.map((product, i) => (
+    <Product
+      key={`prod_${product.name}`}
+      product={product}
+      image={`https://picsum.photos/300/300?random=${i}`}
+    />
+  ));
   return (
     <Container span={24}>
       <Title>Products</Title>
@@ -57,6 +55,6 @@ const Products = () => {
       <Pagination />
     </Container>
   );
-};
+}
 
 export default Products;

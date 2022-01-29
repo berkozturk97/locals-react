@@ -1,5 +1,5 @@
-import {Checkbox} from "antd";
-import styled from "styled-components";
+import { Checkbox } from 'antd';
+import styled from 'styled-components';
 
 export const StyledCheckbox = styled(Checkbox)`
  width: 100%;
@@ -7,7 +7,7 @@ export const StyledCheckbox = styled(Checkbox)`
   background-color: #1EA4CE;
   border-color: #1EA4CE;
 }
-`
+`;
 
 export const CheckboxContainer = styled.div`
 margin-top: 10px;
@@ -23,4 +23,4 @@ overflow: auto;
  .ant-checkbox-wrapper + .ant-checkbox-wrapper {
      margin-left: 0;
  }
-`
+`;
