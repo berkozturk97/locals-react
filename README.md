@@ -48,6 +48,10 @@ The aim of the project is to add and remove products from the basket and product
 
 ## Available Scripts
 
+### `npm run storybok`
+
+Run this command and open [http://localhost:6006]
+
 In the project directory, you can run:
 
 ### `npm start`
