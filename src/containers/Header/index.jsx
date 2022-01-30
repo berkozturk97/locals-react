@@ -32,6 +32,11 @@ function Header() {
       setIsOpenBasketModal(!isOpenBasketModal);
     }
   };
+  // This additional function is added to prevent when user's device width changes anormally, they cannot close their modal with handleBasketModal() func.
+  // If error occurs, this function will eliminate the bug.
+  const handleBasketModalClose = () => {
+    setIsOpenBasketModal(false);
+  };
 
   return (
     <Container>
@@ -55,7 +60,7 @@ function Header() {
       <StyledModal
         visible={isOpenBasketModal}
         footer={null}
-        onCancel={() => handleBasketModal()}
+        onCancel={() => handleBasketModalClose()}
       >
         <Basket />
       </StyledModal>
