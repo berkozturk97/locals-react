@@ -34,6 +34,7 @@ const createTagObject = (productTags) => {
       .flat(1)
       .sort(),
   );
+
   const tags = Object.keys(grouppedTags).map((tag) => ({
     tagName: tag,
     tagCount: grouppedTags[tag],

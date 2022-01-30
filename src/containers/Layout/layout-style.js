@@ -15,6 +15,7 @@ export const StyledContent = styled(Layout.Content)`
   margin: auto;
   max-width: 1440px;
   margin-top: 40px;
+
   @media screen and (max-width: 992px) {
     padding: 0 30px;
   }

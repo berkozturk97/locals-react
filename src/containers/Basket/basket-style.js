@@ -6,6 +6,7 @@ export const Container = styled.div`
   min-height: 100px;
   border-radius: 2px;
   padding: 16px;
+  margin-top: 20px;
 `;
 
 export const ItemContainer = styled.div`
@@ -21,6 +22,7 @@ export const TotalPriceContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
 export const TotalPrice = styled.div`
   background: #ffffff;
   border: 2px solid #1ea4ce;

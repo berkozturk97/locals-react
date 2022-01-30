@@ -8,6 +8,7 @@ export const StyledRadio = styled(Radio)`
   & span {
     color: #525252;
   }
+
   .ant-radio-checked .ant-radio-inner {
     border-color: #1EA4CE !important ;
   }

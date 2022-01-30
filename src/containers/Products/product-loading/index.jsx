@@ -3,7 +3,7 @@ import { Container } from '../products-stlye';
 
 function ProductLoading(props) {
   return Array.from(Array(16).keys()).map(() => (
-    <Container xs={24} sm={12} md={12} lg={8} xl={6}>
+    <Container xs={12} sm={12} md={12} lg={8} xl={6}>
       <ContentLoader
         speed={2}
         width={124}

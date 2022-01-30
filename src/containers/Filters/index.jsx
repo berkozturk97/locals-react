@@ -1,8 +1,8 @@
 import React from 'react';
 import BrandOption from './brands';
-import { Container } from './filters-style';
 import SortingOption from './sorting';
 import TagOption from './tags';
+import { Container } from './filters-style';
 
 function Filters() {
   return (

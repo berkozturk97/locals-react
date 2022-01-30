@@ -1,5 +1,8 @@
 import {
-  put, call, takeEvery, delay,
+  put,
+  call,
+  takeEvery,
+  delay,
 } from 'redux-saga/effects';
 import { fetchProducts } from '../../api';
 import {
@@ -16,7 +19,7 @@ import {
 function* getProducts({ payload }) {
   try {
     yield put({ type: GET_PRODUCT_REQUEST });
-    yield delay(1000);
+    yield delay(3000);
     const { products, totalProductCount } = yield call(() => fetchProducts(
       { query: payload.query, limitless: false },
     ));

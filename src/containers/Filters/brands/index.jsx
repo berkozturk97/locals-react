@@ -1,19 +1,20 @@
-import { Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { Spin } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
+import { StyledInput } from '../../../components/input';
+import { updateFilterOptions } from '../../../redux/actions/productAction';
+import { FilterItemCount } from './brands-style';
+import { Global } from '../../../constants/global';
 import {
   CheckboxContainer,
   StyledCheckbox,
 } from '../../../components/checkbox';
-import { StyledInput } from '../../../components/input';
-import { updateFilterOptions } from '../../../redux/actions/productAction';
 import {
   FilterItemContainer,
   FilterItemHeader,
   FilterOptionsContainer,
   SpinnerContainer,
 } from '../filters-style';
-import { FilterItemCount } from './brands-style';
 
 function BrandOption() {
   const dispatch = useDispatch();
@@ -21,8 +22,9 @@ function BrandOption() {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [checkAll, setCheckAll] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const { companies, loading } = useSelector((state) => state.products);
   const [filteredCompanies, setFilteredCompanies] = useState([]);
+
+  const { companies, loading } = useSelector((state) => state.products);
 
   useEffect(() => {
     setFilteredCompanies(companies);
@@ -42,20 +44,19 @@ function BrandOption() {
   };
 
   const onCheckAllChange = (e) => {
-    setSelectedBrands(e.target.checked ? [] : selectedBrands);
-    if (e.target.checked) {
+    const { checked } = e.target;
+
+    setSelectedBrands(checked ? [] : selectedBrands);
+    if (checked) {
       dispatch(updateFilterOptions({ manufacturer_like: undefined }));
     }
-    setCheckAll(e.target.checked);
+    setCheckAll(checked);
   };
 
   const handleSearchInput = (e) => {
-    setSearchQuery(e.target.value);
-    const filteredOptions = companies.filter(
-      (company) => company.companyName
-        .toLowerCase()
-        .search(e.target.value.toLowerCase()) !== -1,
-    );
+    const { value } = e.target;
+    setSearchQuery(value);
+    const filteredOptions = companies.filter((company) => company.companyName.toLowerCase().search(value.toLowerCase()) !== -1);
     setFilteredCompanies(filteredOptions);
   };
 
@@ -73,12 +74,12 @@ function BrandOption() {
 
   return (
     <FilterItemContainer marginTop="24px" height="245px">
-      <FilterItemHeader>Brands</FilterItemHeader>
+      <FilterItemHeader>{Global.BRANDS}</FilterItemHeader>
       <FilterOptionsContainer height="230px" padding="24px">
         <StyledInput
           onChange={handleSearchInput}
           value={searchQuery}
-          placeholder="Search Brand"
+          placeholder={Global.SEARCH_BRAND}
         />
         {loading ? (
           <SpinnerContainer>
@@ -87,7 +88,7 @@ function BrandOption() {
         ) : (
           <CheckboxContainer>
             <StyledCheckbox checked={checkAll} onChange={onCheckAllChange}>
-              All
+              {Global.ALL}
             </StyledCheckbox>
             <StyledCheckbox.Group value={selectedBrands}>
               {renderCheckbox()}

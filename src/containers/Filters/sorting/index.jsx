@@ -1,7 +1,8 @@
-import { Radio } from 'antd';
 import React from 'react';
+import { Radio } from 'antd';
 import { useDispatch } from 'react-redux';
 import { StyledRadio } from '../../../components/radio';
+import { Global } from '../../../constants/global';
 import { SortingOptions as options } from '../../../constants/sort-options';
 import { updateFilterOptions } from '../../../redux/actions/productAction';
 import {
@@ -22,9 +23,10 @@ function SortingOption() {
       {item.key}
     </StyledRadio>
   ));
+
   return (
     <FilterItemContainer>
-      <FilterItemHeader>Sorting</FilterItemHeader>
+      <FilterItemHeader>{Global.SORTING}</FilterItemHeader>
       <FilterOptionsContainer padding="24px">
         <Radio.Group defaultValue={options[0].value}>
           {renderRadioButton()}

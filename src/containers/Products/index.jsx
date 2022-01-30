@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyledButton } from '../../components/button';
 import { ItemTypes } from '../../constants/item-types';
 import { updateFilterOptions } from '../../redux/actions/productAction';
-import Pagination from '../Pagination';
-import Product from './product';
-import ProductLoading from './product-loading';
+import { Global } from '../../constants/global';
 import {
   ButtonContainer,
   Container,
@@ -13,6 +11,9 @@ import {
   ProductListWrapper,
   Title,
 } from './products-stlye';
+import Pagination from '../Pagination';
+import Product from './product';
+import ProductLoading from './product-loading';
 
 function Products() {
   const dispatch = useDispatch();
@@ -33,9 +34,10 @@ function Products() {
     <Product
       key={`prod_${product.name}`}
       product={product}
-      image={`https://picsum.photos/300/300?random=${i}`}
+      image={`${Global.RANDOM_IMG_URL}${i}`}
     />
   ));
+
   return (
     <Container span={24}>
       <Title>Products</Title>
@@ -49,6 +51,7 @@ function Products() {
           {ItemTypes.SHIRT}
         </StyledButton>
       </ButtonContainer>
+
       <ProductListContainer flex="auto" span={24}>
         <ProductListWrapper gutter={[24, 20]}>{loading ? <ProductLoading /> : renderProducts()}</ProductListWrapper>
       </ProductListContainer>

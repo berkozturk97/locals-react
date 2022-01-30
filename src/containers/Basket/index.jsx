@@ -1,7 +1,6 @@
-import { Divider } from 'antd';
 import React from 'react';
+import { Divider } from 'antd';
 import { useSelector } from 'react-redux';
-import ButtonGroup from '../ButtonGroups';
 import { ProductPrice, ProductTitle } from '../Products/product/product-style';
 import {
   Container,
@@ -10,9 +9,11 @@ import {
   OrderedItemContainer,
   TotalPrice,
   TotalPriceContainer,
-} from './basket-list-style';
+} from './basket-style';
+import { Global } from '../../constants/global';
+import ButtonGroup from '../ButtonGroups';
 
-function BasketList() {
+function Basket() {
   const { basketItems, totalPrice } = useSelector((state) => state.basket);
 
   const renderBasketItems = () => basketItems.map((basket) => (
@@ -22,7 +23,11 @@ function BasketList() {
           <ProductTitle>{basket.item.name}</ProductTitle>
           <ProductPrice>{basket.item.price}</ProductPrice>
         </OrderedItemContainer>
-        <ButtonGroup price={basket.item.price} name={basket.item.name} quantity={basket.quantity} />
+        <ButtonGroup
+          price={basket.item.price}
+          name={basket.item.name}
+          quantity={basket.quantity}
+        />
       </ItemContainer>
       <Divider />
     </>
@@ -36,16 +41,13 @@ function BasketList() {
             {renderBasketItems()}
             <TotalPriceContainer>
               <TotalPrice>
-                ₺
-                {' '}
-                {totalPrice.toFixed(2)}
+                ₺ {totalPrice.toFixed(2)}
               </TotalPrice>
             </TotalPriceContainer>
           </>
-        ) : <EmptyInfo>The basket is empty!</EmptyInfo> }
-
+        ) : <EmptyInfo>{Global.EMPTY_BASKET}</EmptyInfo> }
     </Container>
   );
 }
 
-export default BasketList;
+export default Basket;
