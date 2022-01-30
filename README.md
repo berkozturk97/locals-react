@@ -35,12 +35,12 @@ This web site was build using [React](https://tr.reactjs.org/), [Redux](https://
 
 ## Example Screenshots
 
-[!Initial page](/src/assets/images/github-images/empty_initial_page.png)
-[!Filled basket](/src/assets/images/github-images/filled_basket.png)
-[!Loading](/src/assets/images/github-images/loading.png)
-[!Mobile](/src/assets/images/github-images/mobile.png)
-[!Mobile basket](/src/assets/images/github-images/mobile_basket.png)
-[!Mobile popup filter](/src/assets/images/github-images/mobile_filter_options.png)
+![Initial page](/src/assets/images/github-images/empty_initial_page.png)
+![Filled basket](/src/assets/images/github-images/filled_basket.png)
+![Loading](/src/assets/images/github-images/loading.png)
+![Mobile](/src/assets/images/github-images/mobile.png)
+![Mobile basket](/src/assets/images/github-images/mobile_basket.png)
+![Mobile popup filter](/src/assets/images/github-images/mobile_filter_options.png)
 
 
 ## Available Scripts
