@@ -13,4 +13,6 @@ export const Global = {
   SEARCH_TAG: 'Search Tag',
   LOGO_IMG_ALT: 'Locals market',
   RANDOM_IMG_URL: 'https://picsum.photos/300/300?random=',
+  PREV: 'Prev',
+  NEXT: 'Next',
 };

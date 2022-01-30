@@ -16,6 +16,7 @@ export const StyledCheckbox = styled(Checkbox)`
   .ant-checkbox .ant-checkbox-inner {
     width: 22px;
     height: 22px;
+    box-shadow: 0px 1px 7px rgba(93, 56, 192, 0.4);
   }
 
   .ant-checkbox-inner::after {

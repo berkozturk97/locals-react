@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import GlobalStyle from './styles/global';
 
 import store from './redux/store';

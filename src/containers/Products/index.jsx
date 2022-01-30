@@ -55,7 +55,7 @@ function Products() {
       <ProductListContainer flex="auto" span={24}>
         <ProductListWrapper gutter={[24, 20]}>{loading ? <ProductLoading /> : renderProducts()}</ProductListWrapper>
       </ProductListContainer>
-      <Pagination />
+      {!loading && <Pagination />}
     </Container>
   );
 }

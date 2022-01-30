@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Global } from '../../constants/global';
 import { updateFilterOptions } from '../../redux/actions/productAction';
 import {
   ArrowContainer,
   ArrowLeft,
-  ArrowRigt,
+  ArrowRight,
   Container,
+  PaginationText,
   StyledPagination,
 } from './pagination-style';
 
@@ -17,24 +19,25 @@ function Pagination() {
     if (type === 'prev') {
       return (
         <ArrowContainer>
-          <ArrowLeft />
-          <div>Previous</div>
+          <PaginationText><ArrowLeft />{Global.PREV}</PaginationText>
         </ArrowContainer>
       );
     }
     if (type === 'next') {
       return (
         <ArrowContainer>
-          <div>Next</div>
-          <ArrowRigt />
+          <PaginationText>{Global.NEXT} <ArrowRight /></PaginationText>
         </ArrowContainer>
       );
     }
+
     return originalElement;
   };
+
   const onPageChange = (pageNumber) => {
     dispatch(updateFilterOptions({ _page: pageNumber }));
   };
+
   return (
     <Container>
       <StyledPagination
@@ -42,6 +45,7 @@ function Pagination() {
         showSizeChanger={false}
         total={totalProductCount}
         pageSize={16}
+        responsive
         current={filter._page}
         itemRender={itemRender}
       />
