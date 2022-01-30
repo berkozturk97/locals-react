@@ -5,6 +5,7 @@ This web site was build using [React](https://tr.reactjs.org/), [Redux](https://
 ## Project Links
 
 [Client](https://master.dgpvs6inlk5yw.amplifyapp.com/)
+
 [Server](https://locals-backend.herokuapp.com/)
 
 ## Aim
@@ -16,6 +17,7 @@ This web site was build using [React](https://tr.reactjs.org/), [Redux](https://
 
 ## Top-level Directory Layout
 
+```bash
  .
     ├── src
     │   ├── api
@@ -32,7 +34,7 @@ This web site was build using [React](https://tr.reactjs.org/), [Redux](https://
     ├── .eslintrc.js
     ├── package.json
     └── README.md
-
+```
 ## Example Screenshots
 
 ![Initial page](/src/assets/images/github-images/empty_initial_page.png)
