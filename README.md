@@ -36,22 +36,22 @@ This web site was build using [React](https://tr.reactjs.org/), [Redux](https://
 ## Example Screenshots
 
 > Initial page
-[!Empty_Initial_Page](/src/assets/images/github-images/empty_initial_page.png)
+[!Initial page](/src/assets/images/github-images/empty_initial_page.png)
 
 > Filled basket
-[!Fille_Basket](/src/assets/images/github-images/filled_basket.png)
+[!Filled basket](/src/assets/images/github-images/filled_basket.png)
 
 > Loading
-[!Loading_Page](/src/assets/images/github-images/loading.png)
+[!Loading](/src/assets/images/github-images/loading.png)
 
 > Mobile
-[!Empty_Initial_Page](/src/assets/images/github-images/mobile.png)
+[!Mobile](/src/assets/images/github-images/mobile.png)
 
 > Mobile basket
-[!Empty_Initial_Page](/src/assets/images/github-images/mobile_basket.png)
+[!Mobile basket](/src/assets/images/github-images/mobile_basket.png)
 
 > Mobile popup filter
-[!Empty_Initial_Page](/src/assets/images/github-images/mobile_filter_options.png)
+[!Mobile popup filter](/src/assets/images/github-images/mobile_filter_options.png)
 
 
 ## Available Scripts
