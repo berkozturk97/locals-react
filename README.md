@@ -9,6 +9,7 @@ This web site was build using [React](https://tr.reactjs.org/), [Redux](https://
 [Server](https://locals-backend.herokuapp.com/)
 
 ## Aim
+The aim of the project is to add and remove products from the basket and product card, to display products according to selected filters and to arrange them through React Redux and React Redux Saga.
 
 ## Folder Structure Conventions
 ============================

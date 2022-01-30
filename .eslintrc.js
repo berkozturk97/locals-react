@@ -40,5 +40,6 @@ module.exports = {
     'no-undef': 'off', // off for testing
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'func-names': 'off',
+    'react/function-component-definition': 'off',
   },
 };
