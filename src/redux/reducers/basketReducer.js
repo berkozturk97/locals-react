@@ -5,6 +5,7 @@ const initialState = {
   totalPrice: 0,
 };
 
+// taking total price of basketItems
 const grandTotal = (basketItems) => {
   if (basketItems.length > 0) {
     return basketItems.reduce((sum, basket) => sum + (basket.item.price * basket.quantity), 0);
@@ -27,7 +28,7 @@ export const basketReducer = (state = initialState, { type, payload }) => {
           totalPrice: grandTotal(state.basketItems.concat(newBasketItem)),
         };
       }
-
+      // if item exists increment quantity of the product
       const updatedBasket = state.basketItems.map((basketItem) => {
         if (basketItem.item.name === payload.name) {
           const quantity = basketItem.quantity + 1;

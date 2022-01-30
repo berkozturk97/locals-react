@@ -50,7 +50,7 @@ The aim of the project is to add and remove products from the basket and product
 
 ### `npm run storybok`
 
-Run this command and open [http://localhost:6006]
+Run this command and open [http://localhost:6006](http://localhost:6006)
 
 In the project directory, you can run:
 

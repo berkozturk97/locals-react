@@ -5,6 +5,7 @@ import _ from 'lodash';
 export const fetchProducts = async ({ query, limitless }) => {
   const clonnedQuery = _.cloneDeep(query);
 
+  // When we want to take total count of brand and tag items, we need to remove limit and page queries for taking correct total count of items.
   if (limitless === true) {
     delete clonnedQuery._limit;
     delete clonnedQuery._page;
