@@ -9,6 +9,7 @@ export const FilterItemContainer = styled.div`
   width: 100%;
   height: ${(props) => (props.height ? props.height : '200px')};
   margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)};
+  
 `;
 
 export const FilterItemHeader = styled.span`
@@ -20,6 +21,7 @@ export const FilterOptionsContainer = styled.div`
   width: 100%;
   height: ${(props) => (props.height ? props.height : '180px')};
   background-color: #ffffff;
+  box-shadow: 0px 6px 24px rgba(93, 62, 188, 0.04);
   border-radius: 2px;
   margin-top: 5px;
   padding: ${(props) => (props.padding ? props.padding : 0)};
